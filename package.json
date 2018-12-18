@@ -31,8 +31,14 @@
     "devDependencies": {
         "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
+        "ts-node": "^7.0.1",
         "tslint": "^5.8.0",
-        "typescript": "^3.1.4",
+        "typescript": "^3.2.2",
         "vscode": "^1.1.26"
+    },
+    "dependencies": {
+        "@types/request": "^2.48.1",
+        "request": "^2.88.0",
+        "ts-json-properties": "^2.0.3"
     }
 }

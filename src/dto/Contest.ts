@@ -1,7 +1,7 @@
 /**
  * ..
  */
-public class Contest
+class Contest
 {
 	private id: number;
 	private name: string;
@@ -267,18 +267,19 @@ public class Contest
                 preparedBy, websiteUrl, description, kind, icpcRegion, country, city, season); */
 
         // return new Contest(${this.id}, ${this.type})
-                
+			
+		// TODO: check working of print(objName), and complete toString() if required.
         return `id : ${this.id}, name : ${this.name}, type : ${this.contestType}, frozen : ${this.frozen}`;
 	}
 
-	public Object[] getDisplayDataAsArray()
+	public getDisplayDataAsArray(): Object[]
 	{
-		Object[] data = new Object[4];
+		var data:any[] = new Array(4);
 
-		data[0] = id;
-		data[1] = name;
-		data[2] = contestType;
-		data[3] = durationSeconds / 60;
+		data[0] = this.id;
+		data[1] = this.name;
+		data[2] = this.contestType;
+		data[3] = this.durationSeconds / 60;
 
 		return data;
 	}
