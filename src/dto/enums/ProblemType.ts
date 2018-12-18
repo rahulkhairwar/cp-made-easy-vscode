@@ -1,7 +1,7 @@
 /**
  * An enum for the type of problem.
  */
-enum ProblemType
+export enum ProblemType
 {
 	PROGRAMMING, QUESTION
 

@@ -1,7 +1,9 @@
+import { ProblemType } from "./enums/ProblemType";
+
 /**
  * ..
  */
-class Problem
+export class Problem
 {
     private contestId: number;
     private index: string;

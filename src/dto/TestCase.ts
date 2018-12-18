@@ -1,4 +1,4 @@
-class TestCase
+export class TestCase
 {
     private input: string;
     private output: string;

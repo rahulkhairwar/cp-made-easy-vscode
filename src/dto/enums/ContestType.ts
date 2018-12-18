@@ -1,7 +1,7 @@
 /**
  * An enum for the type of contest.
  */
-enum ContestType
+export enum ContestType
 {
 	CF, IOI, ICPC
 

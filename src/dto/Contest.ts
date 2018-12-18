@@ -1,11 +1,14 @@
+import { ContestType } from './enums/ContestType';
+import { Phase } from './enums/Phase';
+
 /**
  * ..
  */
-class Contest
+export class Contest
 {
 	private id: number;
 	private name: string;
-	private contestType: ContestType;
+	private type: ContestType;
 	private phase: Phase;
 	private frozen: boolean;
     private durationSeconds: number;
@@ -21,13 +24,22 @@ class Contest
     private city: string;
     private season: string;
 
-    constructor(id: number, name: string, contestType: ContestType, phase: Phase, frozen: boolean, durationSeconds: number, 
-        startTimeSeconds: number, relativeTimeSeconds: number, difficulty: number, preparedBy: string, websiteUrl: string, 
-        description: string, kind: string, icpcRegion: string, country: string, city: string, season: string)
+    // constructor(id: number, name: string, type: ContestType, phase: Phase, frozen: boolean, durationSeconds: number, 
+    //     startTimeSeconds: number, relativeTimeSeconds: number, difficulty: number, preparedBy: string, websiteUrl: string, 
+    //     description: string, kind: string, icpcRegion: string, country: string, city: string, season: string)
+	constructor(contest?: any)
 	{
-		this.id = id;
+		if (contest.id !== null) {
+			this.id = contest.id;
+		}
+
+		if (contest.name !== null) {
+			this.name = contest.name;
+		}
+
+/* 		this.id = id;
 		this.name = name;
-		this.contestType = contestType;
+		this.type = type;
 		this.phase = phase;
 		this.frozen = frozen;
 		this.durationSeconds = durationSeconds;
@@ -41,7 +53,7 @@ class Contest
 		this.icpcRegion = icpcRegion;
 		this.country = country;
 		this.city = city;
-		this.season = season;
+		this.season = season; */
 	}
 
 	public Contest()
@@ -72,7 +84,7 @@ class Contest
 
     public getContestType(): ContestType
 	{
-		return this.contestType;
+		return this.type;
 	}
 
     public setContestType(t: string)
@@ -80,13 +92,13 @@ class Contest
 		switch (t)
 		{
 			case "CF":
-				this.contestType = ContestType.CF;
+				this.type = ContestType.CF;
 				break;
 			case "IOI":
-				this.contestType = ContestType.IOI;
+				this.type = ContestType.IOI;
 				break;
 			case "ICPC":
-				this.contestType = ContestType.ICPC;
+				this.type = ContestType.ICPC;
 				break;
             default:
                 const contestTypes = Object.keys(ContestType);
@@ -262,14 +274,14 @@ class Contest
 						+ "\tstartTime (sec) : %d, \trelativeTime (sec) : %d, \tdifficulty : %d, \tpreparedBy : %s, "
 						+ "\twebsiteUrl : %s, \tdescription : %s, \tkind : %s, \ticpcRegion : %s, \tcountry : %s, "
 						+ "\tcity : %s, \tseason : %s", id,
-				name, contestType,
+				name, type,
 				phase, frozen ? 't' : 'f', durationSeconds / 60, this.startTimeSeconds, relativeTimeSeconds, this.difficulty,
                 preparedBy, websiteUrl, description, kind, icpcRegion, country, city, season); */
 
         // return new Contest(${this.id}, ${this.type})
 			
 		// TODO: check working of print(objName), and complete toString() if required.
-        return `id : ${this.id}, name : ${this.name}, type : ${this.contestType}, frozen : ${this.frozen}`;
+        return `id : ${this.id}, name : ${this.name}, type : ${this.type}, frozen : ${this.frozen}`;
 	}
 
 	public getDisplayDataAsArray(): Object[]
@@ -278,7 +290,7 @@ class Contest
 
 		data[0] = this.id;
 		data[1] = this.name;
-		data[2] = this.contestType;
+		data[2] = this.type;
 		data[3] = this.durationSeconds / 60;
 
 		return data;

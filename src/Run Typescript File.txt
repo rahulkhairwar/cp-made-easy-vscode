@@ -1,0 +1,3 @@
+npx ts-node -v
+
+npx ts-node fileName.ts
