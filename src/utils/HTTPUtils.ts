@@ -2,10 +2,6 @@ import { Properties } from 'ts-json-properties';
 import { Contest } from '../dto/Contest';
 import * as request from 'request';
 
-/* let OPTIONS: any = {
-    json: true
-}; */
-
 export class HTTPUtils {
     constructor() {
         Properties.initialize();

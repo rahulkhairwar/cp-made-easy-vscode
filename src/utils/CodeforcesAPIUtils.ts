@@ -2,6 +2,10 @@ import { Contest } from "../dto/Contest";
 import { Properties } from "ts-json-properties";
 import * as request from 'request';
 
+/**
+ * A utility class to fetch data from Codeforces through it's defined API.
+ * Read about it's API <a href="https://codeforces.com/api/help">here<a/>
+ */
 export class CodeforcesAPIUtils {
     constructor() {
         Properties.initialize();
@@ -18,6 +22,7 @@ export class CodeforcesAPIUtils {
 
 }
 
+/* Small test code for testing the class functions. */
 let cfApiUtils = new CodeforcesAPIUtils();
 
 cfApiUtils.getContestsList((contests: Contest[]) => {

@@ -2,7 +2,7 @@ import { ContestType } from './enums/ContestType';
 import { Phase } from './enums/Phase';
 
 /**
- * ..
+ * A DTO class to store information of a Contest.
  */
 export class Contest
 {
@@ -24,40 +24,25 @@ export class Contest
     private city: string;
     private season: string;
 
-    // constructor(id: number, name: string, type: ContestType, phase: Phase, frozen: boolean, durationSeconds: number, 
-    //     startTimeSeconds: number, relativeTimeSeconds: number, difficulty: number, preparedBy: string, websiteUrl: string, 
-    //     description: string, kind: string, icpcRegion: string, country: string, city: string, season: string)
 	constructor(contest?: any)
 	{
-		if (contest.id !== null)
-			this.id = contest.id;
-
-		if (contest.name !== null)
-			this.name = contest.name;
-
-/* 		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.phase = phase;
-		this.frozen = frozen;
-		this.durationSeconds = durationSeconds;
-		this.startTimeSeconds = startTimeSeconds;
-		this.relativeTimeSeconds = relativeTimeSeconds;
-		this.difficulty = difficulty;
-		this.preparedBy = preparedBy;
-		this.websiteUrl = websiteUrl;
-		this.description = description;
-		this.kind = kind;
-		this.icpcRegion = icpcRegion;
-		this.country = country;
-		this.city = city;
-		this.season = season; */
-	}
-
-	public Contest()
-	{
-		// default, in case start time is not provided.
-		this.startTimeSeconds = this.relativeTimeSeconds = this.difficulty = -1;
+		this.id = contest.id;
+		this.name = contest.name;
+		this.type = contest.type;
+		this.phase = contest.phase;
+		this.frozen = contest.frozen;
+		this.durationSeconds = contest.durationSeconds;
+		this.startTimeSeconds = contest.startTimeSeconds;
+		this.relativeTimeSeconds = contest.relativeTimeSeconds;
+		this.difficulty = contest.difficulty;
+		this.preparedBy = contest.preparedBy;
+		this.websiteUrl = contest.websiteUrl;
+		this.description = contest.description;
+		this.kind = contest.kind;
+		this.icpcRegion = contest.icpcRegion;
+		this.country = contest.country;
+		this.city = contest.city;
+		this.season = contest.season;
 	}
 
 	public getId(): number
@@ -268,18 +253,7 @@ export class Contest
 
 	public toString(): string
 	{
-/* 		return String.format("id : %d, \tname : %s, \ttype : %s, \tphase : %s, \tfrozen : %c, \tduration(min) : %d, "
-						+ "\tstartTime (sec) : %d, \trelativeTime (sec) : %d, \tdifficulty : %d, \tpreparedBy : %s, "
-						+ "\twebsiteUrl : %s, \tdescription : %s, \tkind : %s, \ticpcRegion : %s, \tcountry : %s, "
-						+ "\tcity : %s, \tseason : %s", id,
-				name, type,
-				phase, frozen ? 't' : 'f', durationSeconds / 60, this.startTimeSeconds, relativeTimeSeconds, this.difficulty,
-                preparedBy, websiteUrl, description, kind, icpcRegion, country, city, season); */
-
-        // return new Contest(${this.id}, ${this.type})
-			
-		// TODO: check working of print(objName), and complete toString() if required.
-        return `id : ${this.id}, name : ${this.name}, type : ${this.type}, frozen : ${this.frozen}`;
+        return `id : ${this.id}, name : ${this.name}, type : ${this.type}, duration(min) : ${this.durationSeconds / 60}`;
 	}
 
 	public getDisplayDataAsArray(): Object[]
