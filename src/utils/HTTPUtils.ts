@@ -2,9 +2,9 @@ import { Properties } from 'ts-json-properties';
 import { Contest } from '../dto/Contest';
 import * as request from 'request';
 
-let OPTIONS: any = {
+/* let OPTIONS: any = {
     json: true
-};
+}; */
 
 export class HTTPUtils {
     constructor() {
@@ -12,8 +12,9 @@ export class HTTPUtils {
     }
 
     public testRequestGet(url: string, callback: (contests: Contest[]) => any) {
-        request.get(url, OPTIONS, (error: any, response: any, body: any) => {
-            let contestsArray = body.map((contest: any) => new Contest(contest));
+        request.get(url, (error: any, response: any, body: any) => {
+            let jsonBody = JSON.parse(body);
+            let contestsArray = jsonBody.result.map((contest: any) => new Contest(contest));
 
             callback(contestsArray);
         });

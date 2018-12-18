@@ -29,13 +29,11 @@ export class Contest
     //     description: string, kind: string, icpcRegion: string, country: string, city: string, season: string)
 	constructor(contest?: any)
 	{
-		if (contest.id !== null) {
+		if (contest.id !== null)
 			this.id = contest.id;
-		}
 
-		if (contest.name !== null) {
+		if (contest.name !== null)
 			this.name = contest.name;
-		}
 
 /* 		this.id = id;
 		this.name = name;
