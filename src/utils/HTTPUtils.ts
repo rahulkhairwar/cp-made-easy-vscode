@@ -1,31 +1,28 @@
-import {Properties} from 'ts-json-properties';
+import { Properties } from 'ts-json-properties';
+import { Contest } from '../dto/Contest';
 import * as request from 'request';
 
-class HTTPUtils
-{
-    constructor()
-    {
+let OPTIONS: any = {
+    json: true
+};
+
+export class HTTPUtils {
+    constructor() {
         Properties.initialize();
     }
 
-    public testRequestGet(url: string)
-    {
-        request.get(url, (error: any, response: any, body: any) => {
-            // console.log("body : " + body);
+    public testRequestGet(url: string, callback: (contests: Contest[]) => any) {
+        request.get(url, OPTIONS, (error: any, response: any, body: any) => {
+            let contestsArray = body.map((contest: any) => new Contest(contest));
 
-            return body;
+            callback(contestsArray);
         });
     }
+
 }
 
 let httpUtils = new HTTPUtils();
-// let body = httpUtils.testRequestGet(Properties.get("TEST_API_URL"));
-let body = httpUtils.testRequestGet(Properties.get("CODEFORCES_CONTEST_LIST_URL"));
 
-let jsonBody = JSON.parse(body);
-
-for (let i = 0; i < jsonBody.length; i++) {
-    const element = jsonBody[i];
-    
-    console.log("i : " + i + ", el[i] : " + element);
-}
+httpUtils.testRequestGet(Properties.get("CODEFORCES_CONTEST_LIST_URL"), (contests: Contest[]) => {
+    console.log(contests);
+});
