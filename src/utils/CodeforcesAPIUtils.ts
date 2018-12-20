@@ -9,10 +9,19 @@ import * as request from 'request';
 export class CodeforcesAPIUtils {
     constructor() {
         Properties.initialize();
+        // console.log("prop.cf : " + Properties.get("CODEFORCES_CONTEST_LIST_URL"));
+        // console.log("Prop.toString() : " + Properties.toString());
     }
 
     public getContestsList(callback: (contests: Contest[]) => any) {
-        request.get(Properties.get("CODEFORCES_CONTEST_LIST_URL"), (error: any, response: any, body: any) => {
+        console.log("entered getContestsList()");
+
+        // NOT WORKING!!! DON'T KNOW WHY!! >.<
+        // let cfContestListUrl = Properties.get("CODEFORCES_CONTEST_LIST_URL");
+        // console.log(`cfContestListUrl : ${cfContestListUrl}`);
+        let CODEFORCES_CONTEST_LIST_URL = "https://www.codeforces.com/api/contest.list";
+
+        request.get(CODEFORCES_CONTEST_LIST_URL, (error: any, response: any, body: any) => {
             let jsonObject = JSON.parse(body);
             let contestsArray = jsonObject.result.map((contest: any) => new Contest(contest));
 
@@ -23,7 +32,7 @@ export class CodeforcesAPIUtils {
 }
 
 /* Small test code for testing the class functions. */
-let cfApiUtils = new CodeforcesAPIUtils();
+/* let cfApiUtils = new CodeforcesAPIUtils();
 
 cfApiUtils.getContestsList((contests: Contest[]) => {
     var len = contests.length;
@@ -33,4 +42,4 @@ cfApiUtils.getContestsList((contests: Contest[]) => {
     for (var i = 0; i < 10; i++) {
         console.log(`i : ${i}, contests[i] : ${contests[i]}`);
     }
-});
+}); */
