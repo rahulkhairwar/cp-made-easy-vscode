@@ -25,6 +25,7 @@ export class CodeforcesAPIUtils {
             let jsonObject = JSON.parse(body);
             let contestsArray = jsonObject.result.map((contest: any) => new Contest(contest));
 
+            console.log("returning from getContestsList()");
             callback(contestsArray);
         });
     }
