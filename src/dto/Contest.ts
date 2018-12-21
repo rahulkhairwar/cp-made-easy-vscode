@@ -17,12 +17,13 @@ export class Contest
     private difficulty: number;
     private preparedBy: string;
     private websiteUrl: string;
-    private description: string;
+    public description: string;
     private kind: string;
     private icpcRegion: string;
     private country: string;
     private city: string;
-    private season: string;
+	private season: string;
+	label: string;
 
 	constructor(contest?: any)
 	{
@@ -43,6 +44,7 @@ export class Contest
 		this.country = contest.country;
 		this.city = contest.city;
 		this.season = contest.season;
+		this.label = contest.label;
 	}
 
 	public getId(): number

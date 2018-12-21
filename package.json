@@ -1,25 +1,54 @@
 {
     "name": "cp-made-easy-vscode",
-    "displayName": "",
-    "description": "hello",
+    "displayName": "CP Made Easy",
+    "description": "CP Made Easy description goes here...",
     "version": "0.0.1",
+    "icon": "./images/icon_128.png",
+    "author": {
+        "name": "Rahul Khairwar",
+        "email": "rahulkhairwar@gmail.com"
+    },
+    "publisher": "Rahul Khairwar",
     "engines": {
         "vscode": "^1.30.0"
     },
     "categories": [
         "Other"
     ],
-    "activationEvents": [
-        "onCommand:extension.sayHello"
-    ],
+    "activationEvents": ["*"],
     "main": "./out/extension",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rahulkhairwar/cp-made-easy-vscode"
+    },
     "contributes": {
-        "commands": [
+        "commands": [{
+                "command": "extension.showCFContestsList",
+                "title": "CF Contests List"
+            },
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "cp-made-easy.showCFContestsList2",
+                "title": "CF Contests List 2"
             }
-        ]
+        ],
+        "views": {
+            "cp-made-easy": [{
+                    "id": "cf-contests-list",
+                    "name": "Codeforces Contests List"
+                },
+                {
+                    "id": "cf-contest-problems",
+                    "name": "Codeforces Contest Problems"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [{
+                "id": "cp-made-easy",
+                "title": "CP Made Easy",
+                "icon": "./images/icon_128.png"
+            }]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -39,6 +68,7 @@
     "dependencies": {
         "@types/request": "^2.48.1",
         "request": "^2.88.0",
+        "supports-color": "^5.5.0",
         "ts-json-properties": "^2.0.3"
     }
 }

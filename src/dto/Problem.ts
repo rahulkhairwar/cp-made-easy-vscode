@@ -1,4 +1,5 @@
 import { ProblemType } from "./enums/ProblemType";
+import { TestCase } from "./TestCase";
 
 /**
  * ..
