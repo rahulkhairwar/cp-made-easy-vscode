@@ -5,37 +5,39 @@ import { Contest } from './dto/Contest';
 
 export class TreeViewProvider implements vscode.TreeDataProvider<TreeView>
 {
-    onDidChangeTreeData?: vscode.Event<any>; getTreeItem(element: any): vscode.TreeItem | Thenable<vscode.TreeItem> {
-        throw new Error("Method not implemented.");
+    private _onDidChangeTreeData: vscode.EventEmitter<TreeView | undefined> = new vscode.EventEmitter<TreeView | undefined>();
+    readonly onDidChangeTreeData: vscode.Event<TreeView | undefined> = this._onDidChangeTreeData.event;
+
+    refresh(): void {
+        this._onDidChangeTreeData.fire();
     }
 
-    getChildren(element?: any): vscode.ProviderResult<any[]> {
-        let codeforcesAPIUtils = new CodeforcesAPIUtils();
+    getTreeItem(treeView: TreeView): vscode.TreeItem {
+        console.log("in getTreeItem(), tV : " + treeView);
+        return treeView;
+    }
 
-        codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
-            let treeViews: TreeView[] = [];
+    getChildren(treeView?: TreeView): Thenable<TreeView[]> {
+        console.log("in getChildren()");
+        return new Promise<TreeView[]>((resolve, reject) => {
+            let codeforcesAPIUtils = new CodeforcesAPIUtils();
 
-            for (var i = 0; i < contests.length; i++) {
-                // treeViews[i] = new TreeView();
-            }
+            codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
+                let treeViews: TreeView[] = [];
+                // let limit = contests.length;
+                let limit = 10;
 
-            return treeViews;
+                for (var i = 0; i < limit; i++)
+                    treeViews.push(new TreeView("some type...", contests[i].getName(), vscode.TreeItemCollapsibleState.Collapsed,
+                        contests[i]));
+
+                console.log("returning all treeViews");
+                return treeViews;
+            });
         });
-
-        return null;
-
-        /*         let disposable = vscode.commands.registerCommand('extension.showCFContestsList', () => {
-                    codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
-                        console.log("aaa contests : " + contests);
-                    });
-                });
-        
-                context.subscriptions.push(disposable); */
     }
 
     getParent?(element: any) {
-        // throw new Error("Method not implemented.");
-
         return element;
     }
 

@@ -1,9 +1,7 @@
-'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { CodeforcesAPIUtils } from './utils/CodeforcesAPIUtils';
 import { Contest } from './dto/Contest';
+import { TreeViewProvider } from './TreeViewProvider';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -12,16 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "cp-made-easy-vscode" is now active!');
 
-    let codeforcesAPIUtils = new CodeforcesAPIUtils();
-
-/*     try
-    {
-        var contests = await codeforcesAPIUtils.getContestsList((contests: Contest[]) => { return contests; });
-    }
-    catch (error)
-    {
-        console.log(error);
-    } */
+/*     let codeforcesAPIUtils = new CodeforcesAPIUtils();
 
     let disposable = vscode.commands.registerCommand('extension.showCFContestsList', () => {
         codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
@@ -29,7 +18,12 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable); */
+
+    const contestsListProvider = new TreeViewProvider();
+
+    vscode.window.registerTreeDataProvider('cf-contests-list', contestsListProvider);
+    contestsListProvider.refresh();
 
 /*     let codeforcesAPIUtils = new CodeforcesAPIUtils();
 

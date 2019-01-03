@@ -46,7 +46,7 @@
             "activitybar": [{
                 "id": "cp-made-easy",
                 "title": "CP Made Easy",
-                "icon": "./images/icon_128.png"
+                "icon": "./images/icon_light_50x40.png"
             }]
         }
     },
