@@ -23,6 +23,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeView>
             let codeforcesAPIUtils = new CodeforcesAPIUtils();
 
             codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
+                console.log("Fetched all contests");
                 let treeViews: TreeView[] = [];
                 // let limit = contests.length;
                 let limit = 10;

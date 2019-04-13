@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
-import { CodeforcesAPIUtils } from './utils/CodeforcesAPIUtils';
-import { Contest } from './dto/Contest';
+// import { CodeforcesAPIUtils } from './utils/CodeforcesAPIUtils';
+// import { Contest } from './dto/Contest';
 import { TreeViewProvider } from './TreeViewProvider';
 
 // this method is called when your extension is activated

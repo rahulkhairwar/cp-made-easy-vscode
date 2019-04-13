@@ -8,7 +8,8 @@ import * as request from 'request';
  */
 export class CodeforcesAPIUtils {
     constructor() {
-        Properties.initialize();
+        let propertiesFile = "./properties.json";
+        Properties.initialize(propertiesFile);
         // console.log("prop.cf : " + Properties.get("CODEFORCES_CONTEST_LIST_URL"));
         // console.log("Prop.toString() : " + Properties.toString());
     }
@@ -17,8 +18,8 @@ export class CodeforcesAPIUtils {
         console.log("entered getContestsList()");
 
         // NOT WORKING!!! DON'T KNOW WHY!! >.<
-        // let cfContestListUrl = Properties.get("CODEFORCES_CONTEST_LIST_URL");
-        // console.log(`cfContestListUrl : ${cfContestListUrl}`);
+        let cfContestListUrl = Properties.get("CODEFORCES_CONTEST_LIST_URL");
+        console.log(`cfContestListUrl : ${cfContestListUrl}`);
         let CODEFORCES_CONTEST_LIST_URL = "https://www.codeforces.com/api/contest.list";
 
         request.get(CODEFORCES_CONTEST_LIST_URL, (error: any, response: any, body: any) => {
