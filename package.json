@@ -1,7 +1,7 @@
 {
     "name": "cp-made-easy-vscode",
     "displayName": "CP Made Easy",
-    "description": "CP Made Easy description goes here...",
+    "description": "CP Made Easy is a VSCode extension that makes Competitive Programming what it really should be - problem solving! And takes care of everything else!",
     "version": "0.0.1",
     "icon": "./images/icon_128.png",
     "author": {
@@ -15,24 +15,24 @@
     "categories": [
         "Other"
     ],
-    "activationEvents": ["*"],
+    "activationEvents": [
+        "*"
+    ],
     "main": "./out/extension",
     "repository": {
         "type": "git",
         "url": "https://github.com/rahulkhairwar/cp-made-easy-vscode"
     },
     "contributes": {
-        "commands": [{
+        "commands": [
+            {
                 "command": "extension.showCFContestsList",
                 "title": "CF Contests List"
-            },
-            {
-                "command": "cp-made-easy.showCFContestsList2",
-                "title": "CF Contests List 2"
             }
         ],
         "views": {
-            "cp-made-easy": [{
+            "cp-made-easy": [
+                {
                     "id": "cf-contests-list",
                     "name": "Codeforces Contests List"
                 },
@@ -43,11 +43,13 @@
             ]
         },
         "viewsContainers": {
-            "activitybar": [{
-                "id": "cp-made-easy",
-                "title": "CP Made Easy",
-                "icon": "./images/icon_light_50x40.png"
-            }]
+            "activitybar": [
+                {
+                    "id": "cp-made-easy",
+                    "title": "CP Made Easy",
+                    "icon": "./images/icon_light_50x40.png"
+                }
+            ]
         }
     },
     "scripts": {
@@ -63,7 +65,7 @@
         "ts-node": "^7.0.1",
         "tslint": "^5.8.0",
         "typescript": "^3.2.2",
-        "vscode": "^1.1.26"
+        "vscode": "^1.1.33"
     },
     "dependencies": {
         "@types/request": "^2.48.1",

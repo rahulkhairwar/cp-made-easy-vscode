@@ -260,7 +260,7 @@ export class Contest
 
 	public getDisplayDataAsArray(): Object[]
 	{
-		var data:any[] = new Array(4);
+		let data:any[] = new Array(4);
 
 		data[0] = this.id;
 		data[1] = this.name;

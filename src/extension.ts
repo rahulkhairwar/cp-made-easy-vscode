@@ -1,106 +1,17 @@
 import * as vscode from 'vscode';
-// import { CodeforcesAPIUtils } from './utils/CodeforcesAPIUtils';
-// import { Contest } from './dto/Contest';
-import { TreeViewProvider } from './TreeViewProvider';
+import { ContestsListProvider } from './ContestsListProvider';
+import { ContestProblemsProvider } from './ContestProblemsProvider';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "cp-made-easy-vscode" is now active!');
-
-/*     let codeforcesAPIUtils = new CodeforcesAPIUtils();
-
-    let disposable = vscode.commands.registerCommand('extension.showCFContestsList', () => {
-        codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
-            console.log("aaa contests : " + contests);
-        });
-    });
-
-    context.subscriptions.push(disposable); */
-
-    const contestsListProvider = new TreeViewProvider();
+    const contestsListProvider = new ContestsListProvider();
+    const contestProblemsProvider = new ContestProblemsProvider();
 
     vscode.window.registerTreeDataProvider('cf-contests-list', contestsListProvider);
     contestsListProvider.refresh();
-
-/*     let codeforcesAPIUtils = new CodeforcesAPIUtils();
-
-    codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
-        vscode.window.showInformationMessage("got contests from the API call.");
-
-        let len = contests.length;
-        let stringArray = [];
-
-        for (var i = 0; i < len; i++)
-        {
-            stringArray.push(contests[i].toString());
-
-            if (i < 10)
-                console.log(`i : ${i}, contests[i] : ${contests[i]}`);
-        }
-
-        console.log("iterated through all the contests");
-
-        let disposable = vscode.commands.registerCommand('extension.showCFContestsList', () => {
-            console.log("inside disposable");
-            console.log("No. of contests : " + len);
-            vscode.window.showInformationMessage("len : " + len);
-            vscode.window.showQuickPick(stringArray, { canPickMany: false });
-    
-            // vscode.window.showInformationMessage(stringArray);
-            vscode.window.showInformationMessage('hello CP Made Easy');
-        });
-
-        context.subscriptions.push(disposable);
-    }); */
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
-/*     let disposable = vscode.commands.registerCommand('extension.showCFContestsList2', () => {
-        // The code you place here will be executed every time your command is executed
-
-        let codeforcesAPIUtils = new CodeforcesAPIUtils();
-
-        // Display a message box to the user
-        // vscode.window.showInformationMessage('Hello World!');
-
-        codeforcesAPIUtils.getContestsList((contests: Contest[]) => {
-            console.log("inside the api call");
-            console.log("contests.len : " + contests.length);
-
-            let len = contests.length;
-            let stringArray = [];
-            
-            for (var i = 0; i < len; i++)
-                stringArray.push(contests[i].toString());
-            
-            // quickPick.items = Object.keys(contests).map((contest: any) => new Contest());
-            
-            console.log("stringArray[0] : " + stringArray[0]);
-            
-            const quickPick = vscode.window.createQuickPick();
-
-            quickPick.items = stringArray;
-            quickPick.onDidChangeSelection(selection => {
-                console.log("selected in quickpick : " + selection);
-            });
-
-            quickPick.placeholder = "Type contest name for filter...";
-            quickPick.onDidHide(() => quickPick.dispose());
-            quickPick.show();
-        });
-        
-    console.log("after api call");
-
-        // let treeView = vscode.window.createTreeView();
-    });
-
-    context.subscriptions.push(disposable);*/
+    vscode.window.registerTreeDataProvider('cf-contest-problems', contestProblemsProvider);
+    contestProblemsProvider.refresh();
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {
+    console.log("deactivating the extension.");
 }
