@@ -1,7 +1,7 @@
 {
     "name": "cp-made-easy-vscode",
     "displayName": "CP Made Easy",
-    "description": "CP Made Easy description goes here...",
+    "description": "CP Made Easy is a VSCode extension that makes Competitive Programming what it really should be - problem solving! And takes care of everything else!",
     "version": "0.0.1",
     "icon": "./images/icon_128.png",
     "author": {
@@ -25,10 +25,6 @@
         "commands": [{
                 "command": "extension.showCFContestsList",
                 "title": "CF Contests List"
-            },
-            {
-                "command": "cp-made-easy.showCFContestsList2",
-                "title": "CF Contests List 2"
             }
         ],
         "views": {

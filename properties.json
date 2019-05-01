@@ -1,6 +1,5 @@
 {
     "CODEFORCES_CONTEST_LIST_URL":"https://www.codeforces.com/api/contest.list",
     "CODEFORCES_CONTEST_URL":"https://www.codeforces.com/contest/",
-
     "TEST_API_URL":"https://jsonplaceholder.typicode.com/users"
 }
